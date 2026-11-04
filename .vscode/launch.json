@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "EngineSandbox (LLDB)",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/debug/EngineSandbox",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
