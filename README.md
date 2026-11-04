@@ -32,37 +32,41 @@ cmake --build --preset debug
 소스 수정 후에는 빌드와 실행 명령만 다시 사용하면 됩니다.
 빌드 설정을 변경하거나 소스 파일을 추가했을 때는 구성 명령도 다시 실행합니다.
 
-현재 프로그램은 창을 띄우지 않고 엔진의 생성·실행·소멸 순서를 출력합니다.
+프로그램은 1280×720 빈 창을 띄우고, 창의 X 버튼을 누르면 종료합니다.
 
 ```text
 EngineStart!
 Engine running
-Frame1
-EngineStop!
+Engine Stoped
 Main finished
 ```
 
-## macOS + CLion
+## macOS + VSCode
 
-CLion에서 `/Users/chojaehwan/Development/GameEngine` 폴더를 열어 개발합니다.
+VSCode에서 `/Users/chojaehwan/Development/GameEngine` 폴더를 열어 개발합니다.
 이 경로는 현재 Mac의 위치이며 다른 기기의 clone 경로와 같을 필요는 없습니다.
 
-- 툴체인: Apple Clang (`/usr/bin/cc`, `/usr/bin/c++`)
-- CMake·Ninja·LLDB: CLion 내장 도구 사용 가능
-- 실행 대상: `EngineSandbox`
+필요한 확장:
 
-`Settings > Build, Execution, Deployment > CMake`에서 공통 프리셋
-`Debug (C++20)`을 활성화할 수 있습니다. 프리셋은 `build/debug`에 빌드합니다.
-CLion이 자동 생성하는 `Debug` 프로필은 `cmake-build-debug`에 빌드하므로
-터미널의 빌드 경로와 구분합니다. 두 경로 모두 Git에서 제외됩니다.
+- CMake Tools (`ms-vscode.cmake-tools`): 프리셋으로 구성·빌드
+- clangd (`llvm-vs-code-extensions.vscode-clangd`): 코드 자동완성과 오류 표시
+- CodeLLDB (`vadimcn.vscode-lldb`): 디버깅
 
-상단에서 `EngineSandbox`를 선택하고 Run으로 빌드·실행합니다.
-디버깅할 때는 소스 줄 왼쪽에 중단점을 설정한 후 Debug를 실행합니다.
-CLion의 기기별 설정은 `.idea/`에 저장하며 GitHub에 공유하지 않습니다.
+공통 설정은 `.vscode/`에 있으며 Git으로 공유합니다.
 
-공식 안내: [macOS 툴체인 설정](https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-macos.html).
+- `settings.json`: CMake Tools가 `CMakePresets.json`의 `debug` 프리셋을 사용하고,
+  C/C++ 확장의 IntelliSense를 끄고 clangd를 사용합니다.
+- `launch.json`: `build/debug/EngineSandbox`를 LLDB로 실행합니다.
+
+폴더를 처음 열면 CMake Tools가 구성 프리셋을 묻습니다. `Debug (C++20)`을 선택합니다.
+아래쪽 상태 표시줄의 Build 버튼(또는 F7)으로 빌드합니다.
+디버깅할 때는 소스 줄 왼쪽에 중단점을 설정한 후 F5로 `EngineSandbox (LLDB)`를 실행합니다.
+F5는 빌드하지 않으므로 코드를 고친 뒤에는 먼저 빌드합니다.
 
 ## Windows + CLion
+
+Windows 데스크톱도 이후 VSCode로 옮길 예정입니다. 그때 `launch.json`에
+`EngineSandbox.exe`용 디버깅 구성을 추가합니다.
 
 1. GitHub에서 이 저장소를 clone하거나 기존 로컬 저장소를 최신 상태로 업데이트합니다.
 2. CLion에서 저장소의 `CMakeLists.txt`가 있는 폴더를 엽니다.
@@ -146,4 +150,4 @@ clangd를 사용하는 편집기는 `.clangd` 설정을 통해 이 파일을 읽
 빌드 결과와 개인별 IDE 설정은 Git에서 제외합니다.
 
 새 `.cpp` 파일을 추가하면 `CMakeLists.txt`의 해당 타깃에도 등록합니다.
-현재 단계에는 그래픽 라이브러리를 추가하지 않았습니다.
+창과 입력은 SDL3를 사용합니다. 첫 구성 때 CMake가 `FetchContent`로 SDL3 소스를 받아 함께 빌드하므로 인터넷 연결이 필요합니다.
