@@ -9,7 +9,7 @@ EngineApplication::EngineApplication()
 {
     PrintStartupMessage();
 
-    if (!SDL_Init(SDL_INIT_VIDEO)) // SDL 초기화
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) // SDL 초기화
     {
         std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
         return;

@@ -7,7 +7,7 @@
       "args": [
         "/d",
         "/k",
-        "\"${workspaceFolder}\Start-Dev.cmd\" --terminal"
+        "\"${workspaceFolder}\\Start-Dev.cmd\" --terminal"
       ]
     }
   },
