@@ -1,4 +1,15 @@
 {
   "C_Cpp.intelliSenseEngine": "disabled",
-  "cmake.useCMakePresets": "always"
+  "cmake.useCMakePresets": "always",
+  "terminal.integrated.profiles.windows": {
+    "Engine MSVC x64": {
+      "path": "${env:ComSpec}",
+      "args": [
+        "/d",
+        "/k",
+        "\"${workspaceFolder}\Start-Dev.cmd\" --terminal"
+      ]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Engine MSVC x64"
 }

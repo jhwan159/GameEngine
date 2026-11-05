@@ -151,3 +151,13 @@ clangd를 사용하는 편집기는 `.clangd` 설정을 통해 이 파일을 읽
 
 새 `.cpp` 파일을 추가하면 `CMakeLists.txt`의 해당 타깃에도 등록합니다.
 창과 입력은 SDL3를 사용합니다. 첫 구성 때 CMake가 `FetchContent`로 SDL3 소스를 받아 함께 빌드하므로 인터넷 연결이 필요합니다.
+
+## Windows
+
+Windows에서는 `Start-Dev.cmd`로 MSVC x64 개발자 터미널을 열고 macOS와 같은 `debug` 프리셋 명령을 사용합니다.
+도구 설치와 IDE 설정은 [개발 환경 안내](docs/DEVELOPMENT_ENVIRONMENT.md)를 참고합니다.
+SDL3는 CMake가 `FetchContent`로 내려받으므로 첫 구성에는 인터넷과 Git이 필요합니다.
+
+## 학습·리뷰 규칙
+
+코드는 직접 작성하고 AI는 리뷰와 힌트만 제공합니다. 규칙은 [AGENTS.md](AGENTS.md), 진행 방식은 [검토 흐름](docs/REVIEW_WORKFLOW.md)에 있습니다.

@@ -3,4 +3,10 @@
 /CMakeUserPresets.json
 /.idea/
 /.vs/
+/.cache/
 .DS_Store
+
+# 기기별 로컬 파일: 각 기기에서 따로 설정한다.
+/.ai-team/
+/PLAN_PATHS.json
+/.codex/config.toml
