@@ -1,0 +1,12 @@
+# Generated local files
+/build/
+/.vs/
+/.cache/
+/.ai-team/
+/.idea/
+/cmake-build-*/
+/CMakeUserPresets.json
+.DS_Store
+
+# This Windows machine's Obsidian paths; configure locally on each machine.
+/PLAN_PATHS.json

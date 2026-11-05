@@ -1,0 +1,18 @@
+{
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "cmake.configureOnOpen": false,
+  "cmake.generator": "Ninja",
+  "cmake.useCMakePresets": "auto",
+  "terminal.integrated.profiles.windows": {
+    "Engine MSVC x64": {
+      "path": "${env:ComSpec}",
+      "args": [
+        "/d",
+        "/k",
+        "\"${workspaceFolder}\\Start-Dev.cmd\" --terminal"
+      ]
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Engine MSVC x64"
+}
