@@ -6,7 +6,7 @@ The human prefers feature-sized lessons rather than a review round trip for ever
 
 Targets: C++20 proposal, Windows/MSVC/D3D12 and macOS/Apple Clang/Metal on an M5 MacBook. Start with 2D, preserve a path to 3D. First game: cozy farming game. Budget: 10 hours/week including study. SDL GPU is a proposal, not a settled requirement.
 
-The human chose CLion as their preferred IDE. Keep the engine IDE-independent: CMake is the common build definition, command-line builds remain supported, and CLion/Rider/Visual Studio/VS Code project settings must not become runtime or public SDK dependencies. Machine-local .idea state and CMakeUserPresets.json are not shared build requirements. Shared portable presets can be added when the human reaches that exercise.
+The human uses VS Code as their IDE (CLion is no longer used). Keep the engine IDE-independent: CMake is the common build definition, command-line builds remain supported, and CLion/Rider/Visual Studio/VS Code project settings must not become runtime or public SDK dependencies. Machine-local .idea state and CMakeUserPresets.json are not shared build requirements. Shared portable presets can be added when the human reaches that exercise.
 
 ## Resume with minimal context
 

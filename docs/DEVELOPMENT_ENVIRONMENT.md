@@ -1,5 +1,7 @@
 # Windows 개발 환경
 
+> 2026-11-05: CLion은 더 이상 사용하지 않는다. 아래 CLion 설치·설정과 Start-CLion.cmd 기록은 과거 환경 기록이며 Start-CLion.cmd는 삭제했다. 현재 IDE는 VS Code다.
+
 설정 날짜: 2026-10-24. 이 문서는 Windows 환경에 대한 기록이며 Mac 설치·실행은 별도로 확인한다.
 
 ## 설치와 설정

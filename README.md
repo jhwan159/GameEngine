@@ -2,7 +2,7 @@
 
 C++20으로 게임 엔진의 기초를 배우는 프로젝트입니다.
 
-Windows 데스크톱의 CLion과 macOS에서 같은 소스와 `debug` 빌드 프리셋을 사용합니다.
+Windows와 macOS에서 VS Code로 같은 소스와 `debug` 빌드 프리셋을 사용합니다.
 컴파일러와 디버거는 각 기기에 설치된 도구를 사용하며, 경로를 공통 설정에 고정하지 않습니다.
 
 ## 개발 환경 (macOS)
@@ -63,28 +63,19 @@ VSCode에서 `/Users/chojaehwan/Development/GameEngine` 폴더를 열어 개발�
 디버깅할 때는 소스 줄 왼쪽에 중단점을 설정한 후 F5로 `EngineSandbox (LLDB)`를 실행합니다.
 F5는 빌드하지 않으므로 코드를 고친 뒤에는 먼저 빌드합니다.
 
-## Windows + CLion
+## Windows
 
-Windows 데스크톱도 이후 VSCode로 옮길 예정입니다. 그때 `launch.json`에
-`EngineSandbox.exe`용 디버깅 구성을 추가합니다.
+VS Code에서 저장소 폴더를 열고, 터미널은 `Engine MSVC x64` 프로필(`Start-Dev.cmd`로 MSVC x64 환경 준비)을 사용합니다.
+macOS와 같은 `debug` 프리셋 명령으로 빌드합니다. SDL3는 CMake가 `FetchContent`로 내려받으므로 첫 구성에는 인터넷과 Git이 필요합니다.
 
-1. GitHub에서 이 저장소를 clone하거나 기존 로컬 저장소를 최신 상태로 업데이트합니다.
-2. CLion에서 저장소의 `CMakeLists.txt`가 있는 폴더를 엽니다.
-3. `Settings > Build, Execution, Deployment > Toolchains`에서 기존에 정상 작동하는
-   도구 구성을 사용합니다. 새로 설정한다면 `MinGW`의 `Bundled MinGW`와
-   내장 CMake·Ninja·GDB를 선택합니다. CMake는 3.28 이상이어야 합니다.
-4. `Settings > Build, Execution, Deployment > CMake`에서 가져온 `debug` 프리셋의
-   `Enable profile`을 켜고 해당 툴체인이 선택되어 있는지 확인합니다.
-   프리셋이 보이지 않으면 `Ctrl+Shift+A`에서 `Load CMake Presets`를 실행합니다.
-5. 실행 구성에서 `EngineSandbox`와 `debug` 프로필을 선택하고 Build/Run을 실행합니다.
-   디버깅은 소스 줄 왼쪽에 중단점을 찍고 Debug를 실행합니다.
+```cmd
+cmake --preset debug
+cmake --build --preset debug
+.uilddebugEngineSandbox.exe
+```
 
-이 프리셋의 Windows 실행 파일은 `build/debug/EngineSandbox.exe`입니다.
-내장 도구가 Windows의 일반 터미널 PATH에 자동으로 등록되는 것은 아니므로,
-위 과정은 CLion의 Build/Run 기능을 기준으로 합니다.
-
-공식 안내: [Windows 툴체인 설정](https://www.jetbrains.com/help/clion/quick-tutorial-on-configuring-clion-on-windows.html),
-[CMake 프리셋 가져오기와 활성화](https://www.jetbrains.com/help/clion/cmake-presets.html).
+Windows용 디버깅은 `launch.json`에 `EngineSandbox.exe` 구성을 추가해야 합니다. 아직 추가하지 않았습니다.
+도구 설치 기록은 [개발 환경 안내](docs/DEVELOPMENT_ENVIRONMENT.md)에 있습니다. CLion은 더 이상 사용하지 않습니다.
 
 ## 두 기기를 오가며 작업하기
 
@@ -151,12 +142,6 @@ clangd를 사용하는 편집기는 `.clangd` 설정을 통해 이 파일을 읽
 
 새 `.cpp` 파일을 추가하면 `CMakeLists.txt`의 해당 타깃에도 등록합니다.
 창과 입력은 SDL3를 사용합니다. 첫 구성 때 CMake가 `FetchContent`로 SDL3 소스를 받아 함께 빌드하므로 인터넷 연결이 필요합니다.
-
-## Windows
-
-Windows에서는 `Start-Dev.cmd`로 MSVC x64 개발자 터미널을 열고 macOS와 같은 `debug` 프리셋 명령을 사용합니다.
-도구 설치와 IDE 설정은 [개발 환경 안내](docs/DEVELOPMENT_ENVIRONMENT.md)를 참고합니다.
-SDL3는 CMake가 `FetchContent`로 내려받으므로 첫 구성에는 인터넷과 Git이 필요합니다.
 
 ## 학습·리뷰 규칙
 
